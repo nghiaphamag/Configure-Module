@@ -1,0 +1,10 @@
+apt-get install build-essential libc6-armhf-cross libc6-dev-armhf-cross
+apt‐get install binutils-arm‐linux-gnueabihf linux-libc-dev-armhf-cross
+apt‐get install libstdc++6-armhf-cross
+apt‐get install gcc-8-arm-linux-gnueabihf g++-8-arm-linux-gnueabihf
+
+
+.../usr/bin# ln ‐s arm‐linux‐gnueabihf‐gcc-8 arm-gcc8
+.../usr/bin# ln ‐s arm‐linux‐gnueabihf‐g++‐8 arm-g++8
+
+apt-get install default-jre
