@@ -8,4 +8,8 @@
   echo 1 > /proc/sys/net/ipv4/ip_forward
 
 ## BBB:
-  echo "nameserver 8.8.8.8" >> /etc/resolv.conf
+  #!/bin/sh
+  echo "Setting up the default gateway"
+  sudo /sbin/route add default gw 192.168.7.1 usb0
+  echo "Updating the nameserver entry"
+  sudo sh -c "echo nameserver 8.8.8.8 > /etc/resolv.conf"
