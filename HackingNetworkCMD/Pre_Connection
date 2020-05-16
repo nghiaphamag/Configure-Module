@@ -24,7 +24,7 @@ Section 1: Pre-connection attacks.
        ac: uses frequencies lower than 6Ghz
        
   # Targeted Packet Sniffing
-    Step 1: show tagert information
+    Step 1: capture a package through bssid
     >> airodump-ng --bssid [BSSID] --channel [CH] --write test mon0 (Show only one target BSSID)
     Step 2: open wireshark & import *.cap file
     >> wireshark
