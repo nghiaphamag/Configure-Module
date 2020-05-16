@@ -1,0 +1,4 @@
+sudo apt remove --assume-yes vim-tiny
+sudo apt update
+sudo apt install --assume-yes vim
+vi --version
