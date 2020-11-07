@@ -7,10 +7,12 @@ compilation :
 2. 
   > gdb -q <file c/cpp>: execute <file c/cpp> with (q)uite mode
   > gdb -q <file c/cpp> core: execute and find exception
+  > gdb -q -tui <file c/cpp>: start debug & show source code c/cpp -option: [layout split] for show assembly code
 3
   > gdb
   > attach <pid>: execute <pid>
 4
+  > start: start program
   > run <arg>: start program with <arg>
 5
   > (i)nfo (r)egisters: see register contain
@@ -39,7 +41,7 @@ compilation :
   > set variable <var>=<value>: set <value> of <var>
 or> set (<var>=<value>): set <value> of <var>
 17
-  > (n)ext: next line
+  > (n)ext: next 1 step
 18
   > (c)ontinue: continue
 19
