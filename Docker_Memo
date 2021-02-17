@@ -1,0 +1,133 @@
+Section 1: Overviews ⭐️
+	- Requirements							- Doker Volumes
+	- Doker									- Doker Compose
+	- Container								- Orchestration								
+	- Image									- Doker Swarm
+	- Docker Networking					- K8s
+
+Section 2: Download & Setup Docker ⭐️
+ 1. Install docker
+	https://get.docker.com/
+	> curl -fsSL https://get.docker.com -o get-docker.sh
+	> sh get-docker.sh
+	> sudo usermod -aG docker neko
+	> sudo docker version
+ 
+ 2. Install docker machine, composer
+ 	https://docs.docker.com/machine/install-machine/
+ 	> base=https://github.com/docker/machine/releases/download/v0.16.2 &&
+     curl -L $base/docker-machine-$(uname -s)-$(uname -m) >/tmp/docker-machine &&
+     sudo mv /tmp/docker-machine /usr/local/bin/docker-machine &&
+     chmod +x /usr/local/bin/docker-machine
+ 	> docker-machine version
+
+ 	https://docs.docker.com/compose/install/
+ 	> sudo curl -L "https://github.com/docker/compose/releases/download/1.28.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+ 	> sudo chmod +x /usr/local/bin/docker-compose
+ 	> docker-compose version
+
+Section 3: Creating and Using Containers ⭐️
+	> sudo docker container run -d -p 80:80 --name {container} nginx
+	> sudo docker container run -d -p 8080:80 --name {container} httpd
+	> sudo docker container run -d -p 3306:3306 --name {container} -e MYSQL_RANDOM_ROOT_PASSWORD=yes mysql
+	
+	> sudo docker container ps -a
+	> sudo docker container ls -a
+	> sudo docker image ls
+	
+	> sudo docker container stats
+	> sudo docker container logs {container}
+	> sudo docker container top {container}
+	> sudo docker container inspect {container}
+	> sudo docker container stop {container/id}
+	> sudo docker container rm -f {container/id}
+	
+	> sudo docker container run -it --name {container} nginx {bash/sh}
+	> sudo docker container exec -it {container_exist_running} {bash/sh}	
+	> sudo docker container start -ai {container_stopped}
+	> sudo docker container --rm -it --name ubuntu ubuntu (--rm: when exist, container will be remove too)
+
+	> sudo docker container port {container}
+	> sudo docker container inspect --format '{{ .NetworkSettings.IPAddress }}' {container}
+
+Network:
+	> sudo docker network ls
+	> sudo docker network inspect {network_name}
+	> sudo docker network create {new_network} (default bridge)
+	> sudo docker container run -d --name {container} --network {new_network} nginx
+	> sudo docker network connect {new_network} {container}
+	> sudo docker network unconnect {network} {container}
+
+
+Section 4: Container Images ⭐️
+- Docker Hub office:
+	https://github.com/docker-library/official-images/tree/master/library
+	https://hub.docker.com/
+
+
+	> sudo docker pull <image>
+	> sudo docker image history <image>													show layers of changes made in image
+	> sudo docker image inspect <image>
+	
+	> sudo docker login
+	> cat /root/.docker/config.json
+	
+	> sudo docker image tag SOURCE_IMAGE[:TAG] REPO/TARGET_IMAGE[:TAG]		copy image with a new repo/tag
+	> sudo docker image push [OPTIONS] NAME[:TAG] 									Push an image or a repository to a registry
+
+Build image:
+	• FROM (base image)
+	• ENV (environment variable)
+	• RUN (any arbitrary shell command)
+	• EXPOSE (open port from container to virtual network)
+	• CMD (command to run when container starts) 
+	• WORKDIR
+	> sudo docker image build -t {container_name} {Dockerfile_path}
+	
+	> sudo docker system df
+	> sudo docker system purne
+	> sudo docker image purne
+
+
+Section 5: Volumes & Bind Mounting
+
+Volume:
+	> sudo docker volume ls
+	> sudo docker volume prune
+	> sudo docker container run -d -e MYSQL_RANDOM_ROOT_PASSWORD=True -v {volume_name}:{volume_path} --name mysqldb mysql
+	(-v create a host mapped volume inside the container )
+
+Bind:
+	> sudo docker container run -v {host_path}:{container_dir}
+	> sudo docker container run -d -p 80:80 --name nginx -v $(pwd):/usr/share/nginx/html/ nginx
+
+
+Section 6: Docker Compose
+	
+	> sudo docker-compose up
+	> sudo docker-compose down (-v remove volume, --rmi {local} {all} remove image)
+	> sudo docker-compose top
+	> sudo docker-compose ps
+
+
+Section 7: Swarm
+	
+	> sudo docker swarm init
+	> sudo docker node ls
+	> sudo docker service create {image} (== docker run)
+	> sudo docker service ls
+	> sudo docker service ps {service_name}
+	> sudo docker service update {option}
+	
+
+
+
+
+
+
+
+
+
+
+
+
