@@ -3,7 +3,7 @@ Section 1: Overviews ⭐️
 	- Doker									- Doker Compose
 	- Container								- Orchestration								
 	- Image									- Doker Swarm
-	- Docker Networking					- K8s
+	- Docker Networking						- K8s
 
 Section 2: Download & Setup Docker ⭐️
  1. Install docker
@@ -66,14 +66,14 @@ Section 4: Container Images ⭐️
 
 
 	> sudo docker pull <image>
-	> sudo docker image history <image>													show layers of changes made in image
+	> sudo docker image history <image>										Show layers of changes made in image
 	> sudo docker image inspect <image>
 	
 	> sudo docker login
 	> cat /root/.docker/config.json
 	
-	> sudo docker image tag SOURCE_IMAGE[:TAG] REPO/TARGET_IMAGE[:TAG]		copy image with a new repo/tag
-	> sudo docker image push [OPTIONS] NAME[:TAG] 									Push an image or a repository to a registry
+	> sudo docker image tag SOURCE_IMAGE[:TAG] REPO/TARGET_IMAGE[:TAG]		Copy image with a new repo/tag
+	> sudo docker image push [OPTIONS] NAME[:TAG] 							Push an image or a repository to a registry
 
 Build image:
 	• FROM (base image)
@@ -118,16 +118,3 @@ Section 7: Swarm
 	> sudo docker service ls
 	> sudo docker service ps {service_name}
 	> sudo docker service update {option}
-	
-
-
-
-
-
-
-
-
-
-
-
-
